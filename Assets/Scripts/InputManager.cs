@@ -117,27 +117,4 @@ public class InputManager : MonoBehaviour
     {
         submitPressed = false;
     }
-
-    public void TouchInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            isTouched = true;
-            touchPosition = context.ReadValue<Vector2>();
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            isTouched = false;
-        }
-    }
-
-    public Vector2 GetTouchPosition()
-    {
-        return touchPosition;
-    }
-
-    public bool GetIsTouched()
-    {
-        return isTouched;
-    }
 }

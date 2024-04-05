@@ -226,7 +226,6 @@ GameObject:
   - component: {fileID: 785840506}
   - component: {fileID: 785840508}
   - component: {fileID: 785840507}
-  - component: {fileID: 785840509}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -274,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 1c181c3bc389b864584bc266570e3d92, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -303,7 +302,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_ActionId: 079235df-7573-4ec2-bc0d-06c146921092
     m_ActionName: UI/Submit[/Keyboard/enter]
   - m_PersistentCalls:
@@ -315,19 +314,7 @@ MonoBehaviour:
     m_ActionId: 220836a3-86d8-493c-bc6d-08a61217f1e7
     m_ActionName: UI/Point[/Mouse/position,/Pen/position]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 785840507}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: SubmitPressed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: e3e111a4-10ac-4af4-8ff0-77e26287c406
     m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
   - m_PersistentCalls:
@@ -355,22 +342,10 @@ MonoBehaviour:
     m_ActionId: 98f4fb17-5693-44ba-ae73-49f931fce884
     m_ActionName: UI/InteractButtonPressed
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Touch
+  m_DefaultControlScheme: 
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &785840509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785840505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e31057ef324a04478bb4f7d469b3cdc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &834900420
 GameObject:
   m_ObjectHideFlags: 0

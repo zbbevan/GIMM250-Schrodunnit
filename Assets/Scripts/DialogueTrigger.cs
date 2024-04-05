@@ -7,17 +7,19 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink JSON File")]
     [SerializeField] private TextAsset inkJSON;
 
-    private void Update()
+    private void OnMouseDown()
     {
-        if (InputManager.GetInstance().GetSubmitPressed())
-        {
-            Debug.Log(inkJSON.text);
-            StartCoroutine(DelayInputs());
-        }
+        DialoguePlay();
     }
 
-    IEnumerator DelayInputs() // delays so the program doesnt display text multiple times
+    private void DialoguePlay()
     {
-        yield return new WaitForSecondsRealtime(1);
+        if (inkJSON != null)
+        {
+            Debug.Log(inkJSON.text);
+        } else
+        {
+            Debug.LogError("JSON file not loaded correctly");
+        }
     }
 }

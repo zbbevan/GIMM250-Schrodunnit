@@ -16,9 +16,9 @@
                 },
                 {
                     "name": "Submit",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "079235df-7573-4ec2-bc0d-06c146921092",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -372,22 +372,22 @@
                 },
                 {
                     "name": "",
-                    "id": "5fd5731f-f2e4-4ffe-a1ef-e1ff4cadbfa4",
-                    "path": "<Touchscreen>/Press",
+                    "id": "c8f07707-69f9-42b8-9079-b8262abb979a",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Touch",
+                    "groups": "Keyboard&Mouse",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "c8f07707-69f9-42b8-9079-b8262abb979a",
-                    "path": "<Mouse>/rightButton",
+                    "id": "5fd5731f-f2e4-4ffe-a1ef-e1ff4cadbfa4",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "Touch",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
