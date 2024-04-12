@@ -6,7 +6,7 @@ public class DialogueTrigger : MonoBehaviour
 {
     [Header("Ink JSON File")]
     [SerializeField] private TextAsset inkJSON;
-
+    
     private void OnMouseDown()
     {
         DialoguePlay();
@@ -14,12 +14,15 @@ public class DialogueTrigger : MonoBehaviour
 
     private void DialoguePlay()
     {
-        if (inkJSON != null)
+        if (inkJSON != null && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
-            Debug.Log(inkJSON.text);
-        } else
-        {
-            Debug.LogError("JSON file not loaded correctly");
+            if (InputManager.GetInstance().GetSubmitPressed())
+            {
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+            } else
+            {
+                Debug.LogError("JSON file not loaded correctly");
+            }
         }
     }
 }
