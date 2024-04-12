@@ -9,20 +9,18 @@ public class DialogueTrigger : MonoBehaviour
     
     private void OnMouseDown()
     {
-        DialoguePlay();
-    }
-
-    private void DialoguePlay()
-    {
-        if (inkJSON != null && !DialogueManager.GetInstance().dialogueIsPlaying)
+        if (DialogueManager.GetInstance() == null || inkJSON == null)
         {
-            if (InputManager.GetInstance().GetSubmitPressed())
-            {
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
-            } else
-            {
-                Debug.LogError("JSON file not loaded correctly");
-            }
+            Debug.LogError("dialogue manager or ink json is null");
+            return;
         }
+
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            Debug.LogError("dialogue is already playing!");
+            return;
+        }
+
+        DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
     }
 }

@@ -16,9 +16,6 @@ public class InputManager : MonoBehaviour
     private bool interactPressed = false;
     private bool submitPressed = false;
 
-    private Vector2 touchPosition = Vector2.zero;
-    private bool isTouched;
-
     private static InputManager instance;
 
     private void Awake()
