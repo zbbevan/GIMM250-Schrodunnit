@@ -1,4 +1,4 @@
-Oh, hello Detective! My name is Stubbs, its a real pleasure to meet you! #speaker:stubbs #portrait:detective_neutral
+Oh, hello Detective! My name is Stubbs, its a real pleasure to meet you! #speaker:stubbs #portrait:stubbs_neutral
 Later, would you share some details about your detective work? I always wanted to know how accurate books and movies are to the real deal!#speaker:stubbs
 * [I’d be happy to talk about some tools of the trade. I’ll warn you though, fiction is usually pretty exaggerated to my day-to-day.]  -> trade_tools
 * [I guess I could, but I couldn’t give you any case details. Why did you bring an umbrella with you? The weather for this week doesn’t have a single prediction of rain.] -> umbrella
