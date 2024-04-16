@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI displayNameText;
+    [SerializeField] private Animator portraitAnimator;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -142,7 +143,7 @@ public class DialogueManager : MonoBehaviour
                     displayNameText.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
-                    Debug.Log("portrait: " + tagValue);
+                    portraitAnimator.Play(tagValue);
                     break;
                 default:
                     Debug.LogWarning("Tag recognized, but not currently handled: " + tag);
