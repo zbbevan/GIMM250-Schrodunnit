@@ -5,20 +5,28 @@ using UnityEditorInternal;
 using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI displayNameText;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
+
     private static DialogueManager instance;
-    private Story currentStory;
+    public Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
+
+    // constants for porttrait and speaker tracking
+
+    private const string SPEAKER_TAG = "speaker";
+    private const string PORTRAIT_TAG = "portrait";
 
     private void Awake()
     {
@@ -82,12 +90,14 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text = currentStory.Continue();
             DisplayChoices();
+            HandleTags(currentStory.currentTags);
         }
         else
         {
             StartCoroutine(ExitDialogueMode());
         }
     }
+
 
     private void DisplayChoices()
     {
@@ -112,6 +122,33 @@ public class DialogueManager : MonoBehaviour
         }
 
         StartCoroutine(SelectFirstChoice());
+    }
+
+    private void HandleTags(List<string> currentTags)
+    {
+        foreach (string tag in currentTags)
+        {
+            string[] splitTag = tag.Split(':');
+            if (splitTag.Length != 2)
+            {
+                Debug.LogError("Tag could not be parsed: " + tag);
+            }
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+
+            switch (tagKey)
+            {
+                case SPEAKER_TAG:
+                    displayNameText.text = tagValue;
+                    break;
+                case PORTRAIT_TAG:
+                    Debug.Log("portrait: " + tagValue);
+                    break;
+                default:
+                    Debug.LogWarning("Tag recognized, but not currently handled: " + tag);
+                    break;
+            }
+        }
     }
 
     private IEnumerator SelectFirstChoice()
