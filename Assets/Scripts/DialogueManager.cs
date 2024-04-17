@@ -25,10 +25,10 @@ public class DialogueManager : MonoBehaviour
     public Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
 
-    // constants for porttrait and speaker tracking
-
+    // constants for portrait and speaker tracking
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
+    private const string SPRITE_TAG = "sprite";
 
     private void Awake()
     {
@@ -145,7 +145,11 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
+                    Debug.Log(tagValue);
+                    break;
+                case SPRITE_TAG:
                     detectiveController.Play(tagValue);
+                    Debug.Log(tagValue);
                     break;
                 default:
                     Debug.LogWarning("Tag recognized, but not currently handled: " + tag);
