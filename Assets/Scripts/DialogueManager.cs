@@ -84,6 +84,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+        detectiveController.Play("detective_neutral");
     }
 
     private void ContinueStory()
@@ -145,11 +146,9 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
-                    Debug.Log(tagValue);
                     break;
                 case SPRITE_TAG:
                     detectiveController.Play(tagValue);
-                    Debug.Log(tagValue);
                     break;
                 default:
                     Debug.LogWarning("Tag recognized, but not currently handled: " + tag);
