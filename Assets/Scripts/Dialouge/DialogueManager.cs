@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI displayNameText;
     [SerializeField] private Animator portraitAnimator;
     [SerializeField] private Animator detectiveController;
+    [SerializeField] private GameObject Buttons;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -72,6 +73,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode (TextAsset inkJSON)
     {
+        Buttons.SetActive(false);
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
@@ -80,6 +82,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator ExitDialogueMode()
     {
+        Buttons.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
