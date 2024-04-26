@@ -9,6 +9,7 @@ public class PanelButtons : MonoBehaviour
  
     [SerializeField] protected Button butt1; //The left and right buttons
     [SerializeField] protected Button butt2;
+    [SerializeField] protected string nextScene; //The next scene to load after the last panel.
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,7 @@ public class PanelButtons : MonoBehaviour
 
                 if (i == cams.Length - 1)
                 {
-                    break;
+                    UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
                 }
                 else
                 {

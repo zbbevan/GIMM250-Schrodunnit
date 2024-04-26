@@ -6,9 +6,11 @@ public class DialogueTrigger : MonoBehaviour
 {
     [Header("Ink JSON File")]
     [SerializeField] private TextAsset inkJSON;
+    [SerializeField] private GameObject magGlass;
     
     private void OnMouseDown()
     {
+        magGlass.SetActive(true);
         if (DialogueManager.GetInstance() == null || inkJSON == null)
         {
             Debug.LogError("dialogue manager or ink json is null");
@@ -22,5 +24,6 @@ public class DialogueTrigger : MonoBehaviour
         }
 
         DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+        
     }
 }
