@@ -30,6 +30,7 @@ public class PageNavigation : MonoBehaviour
     [SerializeField] private GameObject PanelCam_5;
     [SerializeField] private GameObject PanelCam_6;
     [SerializeField] private GameObject MainCam;
+    [SerializeField] private BoxCollider2D pageBlocker;
 
 
     private void Start() //I know this is not at "optimal" as making a for loop would be, but it's what I did at the time.
@@ -52,6 +53,7 @@ public class PageNavigation : MonoBehaviour
         MainCam.SetActive(false);
         LeftButt.gameObject.SetActive(true);
         RightButt.gameObject.SetActive(true);
+        pageBlocker.enabled = false;
     }
     public void ExitPanelCam(GameObject panCam)
     {
@@ -61,6 +63,7 @@ public class PageNavigation : MonoBehaviour
         MainCam.SetActive(true);
         LeftButt.gameObject.SetActive(false);
         RightButt.gameObject.SetActive(false);
+        pageBlocker.enabled = true;
     }
 
     public void ExitAllPanels()

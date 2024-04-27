@@ -18,11 +18,17 @@ EditorBuildSettings:
     path: Assets/Scenes/PartOneClickThrough.unity
     guid: fc5c6a5c56cb41f43b1af727e5b6cb28
   - enabled: 1
-    path: Assets/Scenes/PartTwo.unity
+    path: Assets/Scenes/Introductions.unity
+    guid: a6981db51c3bb3f4d9b267c8e4835da4
+  - enabled: 1
+    path: Assets/Scenes/murder.unity
     guid: 3357392f2297c0244a6d5c2b2474ce25
+  - enabled: 1
+    path: Assets/Scenes/heist.unity
+    guid: 05378c6830804e14e8f95fee7060b760
   - enabled: 0
     path: Assets/Scenes/PartThreeTransition.unity
-    guid: f53072e46e26ad74ca69860dbb10c658
+    guid: e4b776ba849e04d4fb32c2df61718817
   - enabled: 0
     path: Assets/Scenes/PartThreePlatformer.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd

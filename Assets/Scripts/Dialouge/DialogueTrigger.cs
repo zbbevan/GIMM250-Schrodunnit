@@ -7,6 +7,7 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink JSON File")]
     [SerializeField] private TextAsset inkJSON;
     [SerializeField] private GameObject magGlass;
+
     
     private void OnMouseDown()
     {

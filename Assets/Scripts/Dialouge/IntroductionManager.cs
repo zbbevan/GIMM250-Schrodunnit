@@ -7,7 +7,7 @@ using Ink.Runtime;
 using UnityEngine.EventSystems;
 using System;
 
-public class DialogueManager : MonoBehaviour
+public class IntroductionManager : MonoBehaviour
 {
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -22,29 +22,22 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Character Controllers: Detective")]
     [SerializeField] private Animator detectiveController1;
-    [SerializeField] private Animator detectiveController2;
-    [SerializeField] private Animator detectiveController3;
-    [SerializeField] private Animator detectiveController4;
-    [SerializeField] private Animator detectiveController5;
-    [SerializeField] private Animator detectiveController6;
 
     [Header("Character Controllers: Freyja")]
     [SerializeField] private Animator freyjaController;
 
     [Header("Character Controllers: Jean")]
     [SerializeField] private Animator jeanController;
-    [SerializeField] private Animator jeanController2;
 
     [Header("Character Controllers: Stubbs")]
     [SerializeField] private Animator stubbsController;
-    [SerializeField] private Animator stubbsController2;
 
     [Header("Character Controllers: Bingus")]
     [SerializeField] private Animator bingusController;
 
 
 
-    private static DialogueManager instance;
+    private static IntroductionManager instance;
     public Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
 
@@ -52,6 +45,7 @@ public class DialogueManager : MonoBehaviour
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string SPRITE_TAG = "sprite";
+    private const string CHOICE_KEY = "choice";
 
     private void Awake()
     {
@@ -62,7 +56,7 @@ public class DialogueManager : MonoBehaviour
         instance = this;
     }
 
-    public static DialogueManager GetInstance()
+    public static IntroductionManager GetInstance()
     {
         return instance;
     }
@@ -108,7 +102,6 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator ExitDialogueMode()
     {
         //turns nav buttons back on and sets everything to false
-        resetAnimations();
         Buttons.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         dialogueIsPlaying = false;
@@ -184,18 +177,15 @@ public class DialogueManager : MonoBehaviour
                 case SPRITE_TAG:
                     // oh god this is so ugly oh god oh no
                     detectiveController1.Play(tagValue);
-                    detectiveController2.Play(tagValue);
-                    detectiveController3.Play(tagValue);
-                    detectiveController4.Play(tagValue);
-                    detectiveController5.Play(tagValue);
-                    detectiveController6.Play(tagValue);
                     freyjaController.Play(tagValue);
                     stubbsController.Play(tagValue);
-                    stubbsController2.Play(tagValue);
                     bingusController.Play(tagValue);
-                    jeanController2.Play(tagValue);
                     jeanController.Play(tagValue);
                     Debug.Log(tagValue);
+                    break;
+                case CHOICE_KEY:
+                    UnityEngine.SceneManagement.SceneManager.LoadScene(tagValue); //loads correct scene based on player choice
+                    //scene must be named "murder" and "heist" for this to work.
                     break;
                 default:
                     Debug.LogWarning("Tag recognized, but not currently handled: " + tag);
@@ -219,19 +209,4 @@ public class DialogueManager : MonoBehaviour
         currentStory.ChooseChoiceIndex(choiceIndex);
     }
 
-    public void resetAnimations()
-    {
-        detectiveController1.Play("Detective_basic");
-        detectiveController2.Play("Detective_basic");
-        detectiveController3.Play("Detective_basic");
-        detectiveController4.Play("Detective_basic");
-        detectiveController5.Play("Detective_basic");
-        detectiveController6.Play("Detective_basic");
-        freyjaController.Play("freyja_basic");
-        stubbsController.Play("stubbs_basic");
-        stubbsController2.Play("stubbs_basic");
-        bingusController.Play("bingus_basic");
-        jeanController2.Play("jean_basic");
-        jeanController.Play("jean_basic");
-    }
 }
