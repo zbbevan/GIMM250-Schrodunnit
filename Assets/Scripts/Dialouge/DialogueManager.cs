@@ -14,12 +14,34 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI displayNameText;
     [SerializeField] private Animator portraitAnimator;
-    [SerializeField] private Animator detectiveController;
     [SerializeField] private GameObject Buttons;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
+
+    [Header("Character Controllers: Detective")]
+    [SerializeField] private Animator detectiveController1;
+    [SerializeField] private Animator detectiveController2;
+    [SerializeField] private Animator detectiveController3;
+    [SerializeField] private Animator detectiveController4;
+    [SerializeField] private Animator detectiveController5;
+    [SerializeField] private Animator detectiveController6;
+
+    [Header("Character Controllers: Freyja")]
+    [SerializeField] private Animator freyjaController;
+
+    [Header("Character Controllers: Jean")]
+    [SerializeField] private Animator jeanController;
+    [SerializeField] private Animator jeanController2;
+
+    [Header("Character Controllers: Stubbs")]
+    [SerializeField] private Animator stubbsController;
+    [SerializeField] private Animator stubbsController2;
+
+    [Header("Character Controllers: Bingus")]
+    [SerializeField] private Animator bingusController;
+
 
 
     private static DialogueManager instance;
@@ -33,7 +55,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null) 
+        if (instance != null) //check for multiple managers
         {
             Debug.LogWarning("More than one dialogue manager in the scene");
         }
@@ -47,6 +69,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        //set everything to false/inactive for startup
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         choicesText = new TextMeshProUGUI[choices.Length];
@@ -60,6 +83,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        //checks for dialogue playing, if not returns out immediately, if is then player must complete dialogue to move on
         if (!dialogueIsPlaying)
         {
             return;
@@ -73,6 +97,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode (TextAsset inkJSON)
     {
+        // turns off nav buttons, opens ink file and starts reading it
         Buttons.SetActive(false);
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
@@ -82,6 +107,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator ExitDialogueMode()
     {
+        //turns nav buttons back on and sets everything to false
         Buttons.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         dialogueIsPlaying = false;
@@ -91,6 +117,7 @@ public class DialogueManager : MonoBehaviour
 
     private void ContinueStory()
     {
+        //displays next line of dialogue, choices if they exist, and checks tags to update speaker, portrait, and sprites
         if (currentStory.canContinue)
         {
             dialogueText.text = currentStory.Continue();
@@ -106,6 +133,7 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayChoices()
     {
+        //checks choices and displays them to player
         List<Choice> currentChoices = currentStory.currentChoices;
 
         if (currentChoices.Count > choices.Length)
@@ -131,6 +159,7 @@ public class DialogueManager : MonoBehaviour
 
     private void HandleTags(List<string> currentTags)
     {
+        //handles speaker, portrait, and sprite tags
         foreach (string tag in currentTags)
         {
             string[] splitTag = tag.Split(':');
@@ -151,7 +180,19 @@ public class DialogueManager : MonoBehaviour
                     Debug.Log(tagValue);
                     break;
                 case SPRITE_TAG:
-                    detectiveController.Play(tagValue);
+                    // oh god this is so ugly oh god oh no
+                    detectiveController1.Play(tagValue);
+                    detectiveController2.Play(tagValue);
+                    detectiveController3.Play(tagValue);
+                    detectiveController4.Play(tagValue);
+                    detectiveController5.Play(tagValue);
+                    detectiveController6.Play(tagValue);
+                    freyjaController.Play(tagValue);
+                    stubbsController.Play(tagValue);
+                    stubbsController2.Play(tagValue);
+                    bingusController.Play(tagValue);
+                    jeanController2.Play(tagValue);
+                    jeanController.Play(tagValue);
                     Debug.Log(tagValue);
                     break;
                 default:
@@ -163,6 +204,8 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator SelectFirstChoice()
     {
+        //unity decrees there must be a default first choice for players to make a choice
+        // this selects the first object in the list
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
@@ -170,6 +213,7 @@ public class DialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
+        //makes choice
         currentStory.ChooseChoiceIndex(choiceIndex);
     }
 }
