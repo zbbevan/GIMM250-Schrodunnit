@@ -27,4 +27,5 @@ EditorBuildSettings:
     path: Assets/Scenes/PartThreePlatformer.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:
-    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: dafa62dc2d9cd3f49971aafcb2aaa21b, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: b2b9e4aba045c07478be537852c908db, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: d64688d96c0b1014ab215b4ef78b938e, type: 2}
