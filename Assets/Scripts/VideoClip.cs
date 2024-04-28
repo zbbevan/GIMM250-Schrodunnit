@@ -18,7 +18,7 @@ public class VideoClip : MonoBehaviour
 
     private void Update()
     {
-        Invoke("LoadMenuScene", 27f);
+        Invoke("LoadMenuScene", 30.1f);
     }
 
     void LoadMenuScene()

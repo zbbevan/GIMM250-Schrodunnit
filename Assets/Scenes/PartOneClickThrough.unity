@@ -869,15 +869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceeaf178121fca4c945d10a2bfaca7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 972342568}
-  dialogueText: {fileID: 14149347}
-  displayNameText: {fileID: 681486366}
-  portraitAnimator: {fileID: 372419957}
-  detectiveController: {fileID: 0}
-  Buttons: {fileID: 2041912333}
-  choices:
-  - {fileID: 336799681}
-  - {fileID: 399067518}
 --- !u!4 &234353688
 Transform:
   m_ObjectHideFlags: 0
@@ -2393,7 +2384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1010505671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4089,7 +4080,7 @@ MonoBehaviour:
   - {fileID: 2119701851}
   butt1: {fileID: 1251135647}
   butt2: {fileID: 99227839}
-  nextScene: PartTwo
+  nextScene: Introductions
 --- !u!1 &2139628138
 GameObject:
   m_ObjectHideFlags: 0

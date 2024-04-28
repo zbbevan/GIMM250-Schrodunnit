@@ -14,7 +14,6 @@ public class IntroductionManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI displayNameText;
     [SerializeField] private Animator portraitAnimator;
-    [SerializeField] private GameObject Buttons;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -92,7 +91,6 @@ public class IntroductionManager : MonoBehaviour
     public void EnterDialogueMode (TextAsset inkJSON)
     {
         // turns off nav buttons, opens ink file and starts reading it
-        Buttons.SetActive(false);
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
@@ -102,7 +100,6 @@ public class IntroductionManager : MonoBehaviour
     private IEnumerator ExitDialogueMode()
     {
         //turns nav buttons back on and sets everything to false
-        Buttons.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
