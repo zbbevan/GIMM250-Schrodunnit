@@ -21,12 +21,12 @@ You really think I had a part in all this?
     ... #speaker:Detective #portrait:detective #sprite:detective_sad
     I thought we were getting along! #speaker:Stubbs #portrait:stubbs #sprite:stubbs_basic
     And now you think I’m terrible and a liar! 
-    I can’t believe you...
+    I can’t believe you... #sprite:detective_basic
     ->END
 
 === grateful ===
 Thanks for telling me, Stubbs. I’m sure it’ll be helpful later. #speaker:Detective #portrait:detective #sprite:detective_happy
 Glad I could help out! #speaker:Stubbs #portrait:stubbs #sprite:stubbs:happy
-Gosh, it’s so cool, it feels like I’m your helpful sidekick from a detective book!
+Gosh, it’s so cool, it feels like I’m your helpful sidekick from a detective book! #sprite:detective_basic
 ->END
 

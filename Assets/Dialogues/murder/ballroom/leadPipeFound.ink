@@ -15,8 +15,7 @@ or just another distraction. #speaker:Detective #portrait:detective #sprite:dete
 === common ===
 Are lead pipes common in ballrooms, at all?
 Not at all! #speaker:Jean #portrait:jean #sprite:jean_think
-Their industrial appearance would shatter the image
-of a graceful room instantly! #sprite:jean_basic
+Their industrial appearance would shatter the image of a graceful room instantly! #sprite:jean_basic
 Thanks, Jean. That information is good to know.  #speaker:Detective #portrait:detective #sprite:detective_happy
 <i>So, how would this end up here then? </i> #sprite:detective_basic
 ->END

@@ -2,41 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 5f;
-    private float jumpingPower = 12f;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float jumpingPower = 10f;
     private bool isFacingRight = true;
     private bool isGrounded;
-    private Animator anim;
-    private bool isMoving;
     private bool isJumping;
 
-    private enum MovementState { idle, running, jumping, falling }
-
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] public Transform spawnPoint;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-    }  
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (isJumping && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (isJumping && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+
         Flip();
+    }
+
+    public void Left()
+    {
+        horizontal = -1;
+    }
+
+    public void Zero()
+    {
+        horizontal = 0;
+    }
+
+    public void Right()
+    {
+        horizontal = 1;
+    }
+
+    public void Jump()
+    {
+        if (isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
     }
 
     private void FixedUpdate()
@@ -57,10 +70,6 @@ public class Movement : MonoBehaviour
         {
             isGrounded = true;
         }
-        if (collision.gameObject.CompareTag("Respawn"))
-        {
-            transform.position = spawnPoint.position;
-        }
     }
 
     private void Flip()
@@ -72,28 +81,5 @@ public class Movement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
-    }
-
-
-    void UpdateAnimationState()
-    {
-        MovementState State = MovementState.idle;
-        
-        if (isMoving)
-        {
-            State = MovementState.running;
-        }
-
-        else if (rb.velocity.y > .1f)
-        {
-            State = MovementState.jumping;
-        }
-        else if (rb.velocity.y < -.1f)
-        {
-            State = MovementState.falling;
-        }
-
-
-        anim.SetInteger("state", (int)State);
     }
 }

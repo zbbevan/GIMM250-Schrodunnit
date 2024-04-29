@@ -30,7 +30,8 @@ public class PageNavigation : MonoBehaviour
     [SerializeField] private GameObject PanelCam_5;
     [SerializeField] private GameObject PanelCam_6;
     [SerializeField] private GameObject MainCam;
-    [SerializeField] private BoxCollider2D[] triggerBlocks;
+
+    [SerializeField] private BoxCollider2D[] everyone;
 
 
     private void Start() //I know this is not at "optimal" as making a for loop would be, but it's what I did at the time.
@@ -43,6 +44,11 @@ public class PageNavigation : MonoBehaviour
         butt5.onClick.AddListener(() => EnterPanelCam(PanelCam_5));
         butt6.onClick.AddListener(() => EnterPanelCam(PanelCam_6));
         ExitButton.onClick.AddListener(ExitAllPanels);
+
+        for (int i = 0; i < everyone.Length; i++)
+        {
+            everyone[i].enabled = false;
+        }
     }    
 
      public void EnterPanelCam(GameObject panCam)
@@ -54,9 +60,9 @@ public class PageNavigation : MonoBehaviour
         LeftButt.gameObject.SetActive(true);
         RightButt.gameObject.SetActive(true);
 
-        for (int i = 0; i < triggerBlocks.Length; i++)
+        for (int i = 0; i < everyone.Length; i++)
         {
-            triggerBlocks[i].enabled = true;
+            everyone[i].enabled = true;
         }
     }
     public void ExitPanelCam(GameObject panCam)
@@ -67,9 +73,10 @@ public class PageNavigation : MonoBehaviour
         MainCam.SetActive(true);
         LeftButt.gameObject.SetActive(false);
         RightButt.gameObject.SetActive(false);
-        for (int i = 0; i < triggerBlocks.Length; i++)
+
+        for (int i = 0; i < everyone.Length; i++)
         {
-            triggerBlocks[i].enabled = false;
+            everyone[i].enabled = false;
         }
     }
 

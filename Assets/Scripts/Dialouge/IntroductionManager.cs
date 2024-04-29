@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
@@ -15,6 +14,9 @@ public class IntroductionManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI displayNameText;
     [SerializeField] private Animator portraitAnimator;
     [SerializeField] private GameObject Buttons;
+    [SerializeField] private float typingSpeed = 0.04f;
+    private Coroutine displayLineCoroutine;
+    [SerializeField] private GameObject continueIcon;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -40,6 +42,7 @@ public class IntroductionManager : MonoBehaviour
     private static IntroductionManager instance;
     public Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
+    private bool canContinueToNextLine = false;
 
     // constants for portrait and speaker tracking
     private const string SPEAKER_TAG = "speaker";
@@ -83,7 +86,7 @@ public class IntroductionManager : MonoBehaviour
             return;
         }
 
-        if (InputManager.GetInstance().GetSubmitPressed())
+        if (canContinueToNextLine && InputManager.GetInstance().GetSubmitPressed())
         {
             ContinueStory();
         }
@@ -102,7 +105,7 @@ public class IntroductionManager : MonoBehaviour
     private IEnumerator ExitDialogueMode()
     {
         //turns nav buttons back on and sets everything to false
-        Buttons.SetActive(true);
+        Buttons.SetActive(false);
         yield return new WaitForSeconds(0.2f);
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
@@ -115,8 +118,13 @@ public class IntroductionManager : MonoBehaviour
         //displays next line of dialogue, choices if they exist, and checks tags to update speaker, portrait, and sprites
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
-            DisplayChoices();
+            //checks that typing isnt currently happening, and stops it if it is
+            //basically prevents two coroutines from running at the same time
+            if (displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
+            displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
             HandleTags(currentStory.currentTags);
         }
         else
@@ -205,8 +213,42 @@ public class IntroductionManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-        //makes choice
-        currentStory.ChooseChoiceIndex(choiceIndex);
+        if (canContinueToNextLine)
+        {
+            //makes choice
+            currentStory.ChooseChoiceIndex(choiceIndex);
+        }
     }
+    private void HideChoices()
+    {
+        foreach (GameObject choiceButton in choices)
+        {
+            choiceButton.SetActive(false);
+        }
+    }
+    private IEnumerator DisplayLine(string line)
+    {
+        //empty text box
+        dialogueText.text = "";
+        canContinueToNextLine = false;
+        // hide continue icon and choices until text is done scrolling
+        continueIcon.SetActive(false);
+        HideChoices();
 
+        //display letters one at a time
+        foreach (char letter in line.ToCharArray())
+        {
+            //if player submits early, display whole line
+            if (InputManager.GetInstance().GetSubmitPressed())
+            {
+                dialogueText.text = line;
+                break;
+            }
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        canContinueToNextLine = true;
+        continueIcon.SetActive(true);
+        DisplayChoices();
+    }
 }

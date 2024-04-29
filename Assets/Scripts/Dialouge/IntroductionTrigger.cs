@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class IntroductionTrigger : MonoBehaviour
 {
-   [Header("Ink JSON File")]
+    public bool hasPlayed = false;
+    [Header("Ink JSON File")]
     [SerializeField] private TextAsset inkJSON;
 
     private void OnMouseDown()
@@ -22,6 +23,7 @@ public class IntroductionTrigger : MonoBehaviour
         }
 
         IntroductionManager.GetInstance().EnterDialogueMode(inkJSON);
-        
+        hasPlayed = true;
+
     }
 }

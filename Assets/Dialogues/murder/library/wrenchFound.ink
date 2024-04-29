@@ -1,7 +1,8 @@
-<i>A wrench. This style was patented in 1841, but nowadays they've been phased out for other styles that are easier to use. The adjustable screw on this wrench is rusted and stuck - this wrench likely only had one purpose and never needed to be adjusted. Other places call this a spanner, but wrench just sounds more correct.</i> #speaker:Detective #portrait:detective
+<i>A wrench. This style was patented in 1841, but nowadays they've been phased out for other styles that are easier to use. The adjustable screw on this wrench is rusted and stuck - this wrench likely only had one purpose and never needed to be adjusted.#speaker:Detective #portrait:detective
+<i>Other places call this a spanner, but wrench just sounds more correct.</i> #speaker:Detective #portrait:detective
 Another extremely out of place object... #sprite:detective_alert
 This almost feels too easy and too hard at the same time.
-Why, what do you mean by that? #speaker:Jean #portrait:Jean #sprite:jean_think
+Why, what do you mean by that? #speaker:Jean #portrait:jean #sprite:jean_think
 *[It's too easy because...] -> easy
 *[It's too hard because...] -> hard
 
@@ -9,7 +10,7 @@ Why, what do you mean by that? #speaker:Jean #portrait:Jean #sprite:jean_think
 It seems too easy. We found the knife, so all these extra items just seem like a distraction. #speaker:Detective #portrait:detective
 An investigation should be well rounded, though. #sprite:detective_basic
 So I guess I should keep at it.
-Now that's a determined attitude, dear Detective! #speaker:Jean #portrait:Jean
+Now that's a determined attitude, dear Detective! #speaker:Jean #portrait:jean
 Just remember that we've all got your back! #sprite:jean_basic
 -> END
 

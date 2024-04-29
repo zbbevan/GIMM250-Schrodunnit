@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
@@ -15,10 +14,20 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI displayNameText;
     [SerializeField] private Animator portraitAnimator;
     [SerializeField] private GameObject Buttons;
+    [SerializeField] private float typingSpeed = 0.04f;
+    private Coroutine displayLineCoroutine;
+    [SerializeField] private GameObject continueIcon;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
+
+    //trying to set specific dining room sprites. not working :(
+    //[Header("Dining Room Characters")]
+    //[SerializeField] private SpriteRenderer bingus;
+    //[SerializeField] private SpriteRenderer stubbs;
+    //[SerializeField] private SpriteRenderer jean;
+
 
     [Header("Character Controllers: Detective")]
     [SerializeField] private Animator detectiveController1;
@@ -47,6 +56,7 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager instance;
     public Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
+    private bool canContinueToNextLine = false;
 
     // constants for portrait and speaker tracking
     private const string SPEAKER_TAG = "speaker";
@@ -74,7 +84,13 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
-        foreach(GameObject choice in choices)
+
+        // was trying to set them to GO AWAY. they will not disappear on start
+        //bingus.GetComponent<SpriteRenderer>().enabled = false;
+        //jean.GetComponent<SpriteRenderer>().enabled = false;
+        //stubbs.GetComponent<SpriteRenderer>().enabled = false;
+
+        foreach (GameObject choice in choices)
         {
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
@@ -89,7 +105,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (InputManager.GetInstance().GetSubmitPressed())
+        if (canContinueToNextLine && InputManager.GetInstance().GetSubmitPressed())
         {
             ContinueStory();
         }
@@ -122,8 +138,13 @@ public class DialogueManager : MonoBehaviour
         //displays next line of dialogue, choices if they exist, and checks tags to update speaker, portrait, and sprites
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
-            DisplayChoices();
+            //checks that typing isnt currently happening, and stops it if it is
+            //basically prevents two coroutines from running at the same time
+            if (displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
+            displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
             HandleTags(currentStory.currentTags);
         }
         else
@@ -215,10 +236,14 @@ public class DialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-        //makes choice
-        currentStory.ChooseChoiceIndex(choiceIndex);
+        if (canContinueToNextLine)
+        {
+            //makes choice
+            currentStory.ChooseChoiceIndex(choiceIndex);
+        }
     }
 
+    //should reset animations to basic ones
     public void resetAnimations()
     {
         detectiveController1.Play("Detective_basic");
@@ -233,5 +258,39 @@ public class DialogueManager : MonoBehaviour
         bingusController.Play("bingus_basic");
         jeanController2.Play("jean_basic");
         jeanController.Play("jean_basic");
+    }
+    
+    private void HideChoices()
+    {
+        foreach (GameObject choiceButton in choices)
+        {
+            choiceButton.SetActive(false);
+        }
+    }
+    //creates a typing text effect instead of flat displaying the dialogue
+    private IEnumerator DisplayLine(string line)
+    {
+        //empty text box
+        dialogueText.text = "";
+        canContinueToNextLine = false;
+        // hide continue icon and choices until text is done scrolling
+        continueIcon.SetActive(false);
+        HideChoices();
+
+        //display letters one at a time
+        foreach (char letter in line.ToCharArray())
+        {
+            //if player submits early, display whole line
+            if (InputManager.GetInstance().GetSubmitPressed())
+            {
+                dialogueText.text = line;
+                break;
+            }
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        canContinueToNextLine = true;
+        continueIcon.SetActive(true);
+        DisplayChoices();
     }
 }
