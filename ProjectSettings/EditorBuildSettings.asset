@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 0b21cd1695440d845acef7f54b6bb7c1
-  - enabled: 0
-    path: Assets/Scenes/PartOne.unity
-    guid: acb554fe01c400a42886d2f3d1c3698a
   - enabled: 1
     path: Assets/Scenes/PartOneClickThrough.unity
     guid: fc5c6a5c56cb41f43b1af727e5b6cb28
@@ -26,12 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/heist.unity
     guid: 05378c6830804e14e8f95fee7060b760
-  - enabled: 0
-    path: Assets/Scenes/PartThreeTransition.unity
-    guid: e4b776ba849e04d4fb32c2df61718817
+  - enabled: 1
+    path: Assets/Scenes/fightScene.unity
+    guid: 3e500798f0473b94daf95d218dcb72e2
+  - enabled: 1
+    path: Assets/Scenes/PartThreeClickThrough.unity
+    guid: fc266cace63caa04ab74ea94456f7ed7
   - enabled: 1
     path: Assets/Scenes/Platformer.unity
     guid: 588334ddd1eb66c49893569229878b9e
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 16cd31eef05afd74eaa87d626ea24269
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: b2b9e4aba045c07478be537852c908db, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: d64688d96c0b1014ab215b4ef78b938e, type: 2}
