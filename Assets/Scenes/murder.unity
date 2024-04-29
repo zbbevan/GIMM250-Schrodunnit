@@ -9361,7 +9361,7 @@ MonoBehaviour:
   - {fileID: 204162381}
   butt1: {fileID: 1251135647}
   butt2: {fileID: 99227839}
-  nextScene: PartThreeTransition
+  nextScene: fightScene
 --- !u!114 &2128814381
 MonoBehaviour:
   m_ObjectHideFlags: 0

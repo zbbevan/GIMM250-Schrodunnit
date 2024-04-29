@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf1432face390e46baa5aa3517b738a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON: {fileID: 4900000, guid: 193d21bceb0d1c142ad940335fafea31, type: 3}
+  inkJSON: {fileID: 4900000, guid: 1c5569693b578a947842c6460c3d96c2, type: 3}
   magGlass: {fileID: 1506007027}
 --- !u!1 &135284948 stripped
 GameObject:
@@ -4850,7 +4850,7 @@ PrefabInstance:
     - target: {fileID: 2770032530034947257, guid: 31892a4e30533e449917e5ec8366eb95, type: 3}
       propertyPath: inkJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 4d5ea77c6dffb64498bb5c6add7e7926, type: 3}
+      objectReference: {fileID: 4900000, guid: b26e9fa2fa9740d478c7fcbdd06cabaa, type: 3}
     - target: {fileID: 2770032530034947257, guid: 31892a4e30533e449917e5ec8366eb95, type: 3}
       propertyPath: magGlass
       value: 
@@ -5411,7 +5411,7 @@ PrefabInstance:
     - target: {fileID: 2770032530034947257, guid: 31892a4e30533e449917e5ec8366eb95, type: 3}
       propertyPath: inkJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 025cad66bc3ce4d4699b30055e445e3f, type: 3}
+      objectReference: {fileID: 4900000, guid: 69e742ecd2306614ab3f5c8483d262d5, type: 3}
     - target: {fileID: 2770032530034947257, guid: 31892a4e30533e449917e5ec8366eb95, type: 3}
       propertyPath: magGlass
       value: 
