@@ -13,12 +13,19 @@ public class SceneManager : MonoBehaviour
     private void Start()
     {
         startButton.onClick.AddListener(() => LoadScene(sceneName));
+        StartCoroutine(RewatchAnimation());
     }
 
 
     public void LoadScene(string sceneName)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+
+    IEnumerator RewatchAnimation()
+    {
+        yield return new WaitForSeconds(20f);
+        LoadScene("Intro");
     }
 }
 

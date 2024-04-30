@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EndGame : MonoBehaviour
-{   void Start()
+{
+    [SerializeField] private bool endGame = false;
+    void Start()
     {
         StartCoroutine(CloseGameDelayed());
     }
@@ -12,6 +14,13 @@ public class EndGame : MonoBehaviour
     {
         yield return new WaitForSeconds(10f); // Wait for 10 seconds
         Debug.Log("Closing game after 10 seconds.");
-        Application.Quit(); // Close the game
+        if (endGame)
+        {
+            Application.Quit(); // Close the game
+        }
+        else if (!endGame)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0); // Load the first scene
+        }
     }
 }
