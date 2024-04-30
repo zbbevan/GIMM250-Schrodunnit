@@ -21,13 +21,31 @@ public class FightDialogueManager : MonoBehaviour
     [SerializeField] private string nextScene;
     private static FightDialogueManager instance;
 
+
+
+    [Header("Character Controllers: Detective")]
+    [SerializeField] private Animator detectiveController1;
+
+    [Header("Character Controllers: Freyja")]
+    [SerializeField] private Animator freyjaController;
+
+    [Header("Character Controllers: Jean")]
+    [SerializeField] private Animator jeanController;
+
+    [Header("Character Controllers: Stubbs")]
+    [SerializeField] private Animator stubbsController;
+
+    [Header("Character Controllers: Bingus")]
+    [SerializeField] private Animator bingusController;
+
+
     public bool dialogueIsPlaying { get; private set; }
     private bool canContinueToNextLine = false;
 
     // constants for portrait and speaker tracking
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
-
+    private const string SPRITE_TAG = "sprite";
     private void Awake()
     {
         if (instance != null) //check for multiple managers
@@ -124,6 +142,15 @@ public class FightDialogueManager : MonoBehaviour
                     break;
                 case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
+                    Debug.Log(tagValue);
+                    break;
+                case SPRITE_TAG:
+                    // oh god this is so ugly oh god oh no
+                    detectiveController1.Play(tagValue);
+                    freyjaController.Play(tagValue);
+                    stubbsController.Play(tagValue);
+                    bingusController.Play(tagValue);
+                    jeanController.Play(tagValue);
                     Debug.Log(tagValue);
                     break;
                 default:
