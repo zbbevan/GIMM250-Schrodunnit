@@ -1,7 +1,7 @@
 #speaker:Detective #portrait:detective
 A missing wrench in the library... #sprite:detective_basic
 Another missing item in a strange place, but no key for the box. #sprite:detective_sad
-Ah, I'm sure there's an explanation for the wrench here!#speaker:Jean #portrait:Jean #sprite:jean_think
+Ah, I'm sure there's an explanation for the wrench here!#speaker:Jean #portrait:jean #sprite:jean_think
 And the key will turn up eventually, I'm sure!
 *[What's your theory on the wrench?] -> wrench
 *[You're sure about the key?] -> key

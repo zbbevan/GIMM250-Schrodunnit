@@ -4850,7 +4850,7 @@ PrefabInstance:
     - target: {fileID: 2770032530034947257, guid: 31892a4e30533e449917e5ec8366eb95, type: 3}
       propertyPath: inkJSON
       value: 
-      objectReference: {fileID: 4900000, guid: b26e9fa2fa9740d478c7fcbdd06cabaa, type: 3}
+      objectReference: {fileID: 4900000, guid: de7aa8ce723f3b84f8fec517ddc82db4, type: 3}
     - target: {fileID: 2770032530034947257, guid: 31892a4e30533e449917e5ec8366eb95, type: 3}
       propertyPath: magGlass
       value: 
