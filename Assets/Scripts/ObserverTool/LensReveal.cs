@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LensReveal : MonoBehaviour
 {
+    //This script is how the hidden objects are revealed when the magnifying glass touches them.
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     void Start()

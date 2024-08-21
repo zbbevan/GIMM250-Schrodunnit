@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
+
+    //This script teleports the player to the top of the next page after they finish the dialogue at the bottom.
     [SerializeField] private Transform teleportTarget;
     [SerializeField] private GameObject player;
 

@@ -6,7 +6,7 @@ public class DragMagnifyingGlass : MonoBehaviour
 {
 
     //This code was found in a video by Alexander Zotov on YouTube. https://www.youtube.com/watch?v=UJ4w5V5aTP4
-
+    //This code is how we drag around the magnifying glass to reveal hidden objects.
     private Vector2 mousePosition;
     private Vector2 dragOffset;
 

@@ -15,7 +15,7 @@ public class PageNavigation : MonoBehaviour
     [SerializeField] private Button butt2;
     [SerializeField] private Button butt3;
     [SerializeField] private Button butt4;
-    [SerializeField] private Button butt5;
+    [SerializeField] private Button butt5; //BUTTONS
     [SerializeField] private Button butt6;
     [SerializeField] private Button ExitButton;
     [SerializeField] private GameObject BigButton;
@@ -26,7 +26,7 @@ public class PageNavigation : MonoBehaviour
     [SerializeField] private GameObject PanelCam_1;
     [SerializeField] private GameObject PanelCam_2;
     [SerializeField] private GameObject PanelCam_3;
-    [SerializeField] private GameObject PanelCam_4;
+    [SerializeField] private GameObject PanelCam_4; //CAMERAS
     [SerializeField] private GameObject PanelCam_5;
     [SerializeField] private GameObject PanelCam_6;
     [SerializeField] private GameObject MainCam;
@@ -51,7 +51,7 @@ public class PageNavigation : MonoBehaviour
         }
     }    
 
-     public void EnterPanelCam(GameObject panCam)
+     public void EnterPanelCam(GameObject panCam) //Activates the specific camera for the comic panel selected, deactivates all the other buttons, and activates the in-panel navigation ones. 
     {
         panCam.SetActive(true);
         BigButton.SetActive(false);
@@ -65,7 +65,7 @@ public class PageNavigation : MonoBehaviour
             everyone[i].enabled = true;
         }
     }
-    public void ExitPanelCam(GameObject panCam)
+    public void ExitPanelCam(GameObject panCam) //Deactivates the cam, reactivates the big camera and all the panel buttons.
     {
         panCam.SetActive(false);
         BigButton.SetActive(true);
@@ -80,7 +80,7 @@ public class PageNavigation : MonoBehaviour
         }
     }
 
-    public void ExitAllPanels()
+    public void ExitAllPanels() //Deactivates all the panel cams regardless of which one is active.
     {
         ExitPanelCam(PanelCam_1);
         ExitPanelCam(PanelCam_2);

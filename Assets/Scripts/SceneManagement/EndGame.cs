@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EndGame : MonoBehaviour
 {
+    //This script either closes the game or loops back to the first scene. I set it up for both so that the game could loop during our presentation, but the final export can close properly.
     [SerializeField] private bool endGame = false;
     void Start()
     {
